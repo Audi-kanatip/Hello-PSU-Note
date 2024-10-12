@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 {% block body %}
-<ul class="nav justify-content-center" style="padding-top: 1em;">
-  <li class="nav-item">
-    <a class="btn btn-primary" href="{{ url_for('notes_create') }}">Create</a>
-  </li>
-</ul>
+<div class="d-flex justify-content-end" style="margin-top: 3em;">
+  <a class="btn btn-success" href="{{ url_for('notes_create') }}">Create</a>
+</div>
 
 {% for note in notes %}
 <div class="card my-3">
@@ -20,10 +18,12 @@
       {% endfor %}
       <br>
       Last update: {{ note.updated_date }}
-    </div class="text-center my-2">
-    <a class="btn btn-secondary mx-2" href="{{ url_for('notes_edit', note_id=note.id) }}">Edit</a>
-    <a class="btn btn-primary mx-2" href="{{ url_for('notes_delete', note_id=note.id) }}">Delete</a> 
-  </div>
+    </div>
+    <div class="text-center mt-4">
+    <a class="btn btn-primary mx-2" href="{{ url_for('notes_edit', note_id=note.id) }}">Edit</a>
+    <a class="btn btn-danger mx-2" href="{{ url_for('notes_delete', note_id=note.id) }}">Delete</a>       
+    </div>
+    </div>
 </div>
 {% endfor %}
 {% endblock %}
